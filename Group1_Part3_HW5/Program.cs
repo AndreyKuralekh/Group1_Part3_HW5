@@ -78,13 +78,15 @@ Bob,Williams,35";
 
         public List<object> SaveDataToList(object data)
         {
+            Type type1 = data.GetType();
             var list = new List<object>();
             if (data != null)
-                if (data is JsonDocument json)
-                {
-                    list = JsonConvert.DeserializeObject<List<Person>>(JSON.stringify(data));
-                }
-                else
+                ////if (data is JsonDocument json)
+                //{
+                //    string jsonStr = JsonConvert.SerializeObject(data);
+                //    //list = JsonConvert.DeserializeObject<List<Person>>(jsonStr);
+                //}
+                //else
                 {
 
                     list.Add(data);
@@ -111,10 +113,9 @@ Bob,Williams,35";
                 var writer = new JsonTextWriter(json);
                 AddElements(xml.DocumentElement, writer);
                 //return new JsonData(json.ToString());
-                return json;
+                return json; 
+                    //System.Text.Json.JsonSerializer.Serialize(json);
 
-                //var json = JsonSerializer.Serialize(data);
-                //return json;
             }
             else
             {
